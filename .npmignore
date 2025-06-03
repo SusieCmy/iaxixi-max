@@ -1,0 +1,52 @@
+# Source files
+src/
+.storybook/
+
+# Development files
+*.config.js
+*.config.ts
+.eslintrc.js
+jest.config.js
+rollup.config.js
+tsconfig.json
+
+# Testing
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+coverage/
+.nyc_output
+
+# Storybook
+**/*.stories.ts
+**/*.stories.tsx
+storybook-static/
+
+# Development dependencies
+node_modules/
+
+# Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Git
+.git/
+.gitignore
+
+# CI
+.github/
+
+# Documentation (optional - remove if you want to include)
+README.md
