@@ -15,11 +15,13 @@ export default [
         file: packageJson.main,
         format: 'cjs',
         sourcemap: true,
+        exports: 'named'
       },
       {
         file: packageJson.module,
         format: 'esm',
         sourcemap: true,
+        exports: 'named'
       },
     ],
     plugins: [
@@ -28,20 +30,32 @@ export default [
         browser: true,
       }),
       commonjs(),
-      typescript({
-        declaration: true,
-        declarationDir: 'dist',
-      }),
       postcss({
-        extract: true,
+        config: {
+          path: './postcss.config.js',
+        },
+        extensions: ['.css'],
         minimize: true,
+        inject: {
+          insertAt: 'top',
+        },
+        extract: 'styles.css', // 提取CSS到单独文件
+        use: [
+          ['sass', { includePaths: ['./src/styles'] }]
+        ],
+      }),
+      typescript({ 
+        tsconfig: './tsconfig.json',
+        declaration: false,
+        declarationMap: false,
       }),
     ],
     external: ['react', 'react-dom'],
   },
+  // 生成类型定义文件
   {
-    input: 'dist/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    input: 'src/index.ts',
+    output: [{ file: packageJson.types, format: 'esm' }],
     plugins: [dts()],
     external: [/\.css$/],
   },

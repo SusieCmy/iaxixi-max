@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Button } from 'iaxixi-max'
+import { SuButton, SuPagination } from 'iaxixi-max'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,7 +10,17 @@ function App() {
   return (
     <>
       <div>
-        <Button primary label="Click me" />
+        <SuPagination
+          currentPage={1}
+          onPageChange={() => { console.log('onPageChange') }}
+          showFirstLast
+          showPrevNext
+          size="md"
+          totalPages={10}
+          visiblePages={5}
+        />
+        <button className="btn btn-secondary">Secondary</button>
+        <SuButton children="Click me" variant='primary' />
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>

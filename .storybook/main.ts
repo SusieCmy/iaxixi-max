@@ -14,6 +14,15 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
-  }
+  },
+  viteFinal: async (config) => {
+    // 确保 Storybook 也能处理 Tailwind CSS
+    const { mergeConfig } = await import('vite');
+    return mergeConfig(config, {
+      plugins: [
+        // Tailwind CSS 插件会被 Vite 配置自动包含
+      ],
+    });
+  },
 };
 export default config;

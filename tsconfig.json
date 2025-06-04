@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "jsx": "react-jsx",
     "declaration": true,
-    "declarationDir": "dist",
+    "declarationMap": true,
     "outDir": "dist"
   },
   "include": [

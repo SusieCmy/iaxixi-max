@@ -3,9 +3,9 @@
 一个现代化的 React UI 组件库，基于 TypeScript、TailwindCSS、Rollup 和 Vite 构建。
 
 ## ✨ 特性
-- 🚀 现代化技术栈：React 19 + TypeScript 5 + TailwindCSS 4
+- 🚀 现代化技术栈：React 19 + TypeScript 5 + TailwindCSS 4 + daisyui
 - 📦 支持 ESM/CJS 双格式输出
-- 🎨 内置 TailwindCSS，极致定制
+- 🎨 内置 TailwindCSS + daisyui，极致定制
 - 🛠️ Storybook 文档与演示
 - ⚡ Vite 极速开发体验
 
@@ -18,10 +18,10 @@ pnpm add iaxixi-max
 
 ## 🔨 使用方法
 ```tsx
-import { Button } from 'iaxixi-max';
+import { SuButton } from 'iaxixi-max';
 
 export default function Demo() {
-  return <Button>按钮</Button>;
+  return <SuButton>按钮</SuButton>;
 }
 ```
 
