@@ -27,8 +27,7 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
   onPageChange,
   visiblePages = 5,
   size = 'md',
-  showFirstLast = true,
-  showPrevNext = true,
+  showPrevNext = false,
   disabled = false,
   className = '',
 }) => {
@@ -62,14 +61,6 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
       pages.push(i);
     }
 
-    // 添加末页和省略号
-    if (endPage < totalPages) {
-      if (endPage < totalPages - 1) {
-        pages.push('...');
-      }
-      pages.push(totalPages);
-    }
-
     return pages;
   };
 
@@ -94,26 +85,14 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
 
   const visiblePagesList = getVisiblePages();
   const sizeClass = getSizeClass();
-  const baseButtonClass = `btn ${sizeClass} ${disabled ? 'btn-disabled' : ''}`;
+  const baseButtonClass = `btn btn-soft ${sizeClass} ${disabled ? 'btn-disabled' : ''}`;
 
   return (
     <div className={`join ${className}`}>
-      {/* 首页按钮 */}
-      {showFirstLast && (
-        <button
-          className={`${baseButtonClass} join-item ${currentPage === 1 ? 'btn-disabled' : ''}`}
-          onClick={() => handlePageClick(1)}
-          disabled={disabled || currentPage === 1}
-          aria-label="首页"
-        >
-          ««
-        </button>
-      )}
-
       {/* 上一页按钮 */}
       {showPrevNext && (
         <button
-          className={`${baseButtonClass} join-item ${currentPage === 1 ? 'btn-disabled' : ''}`}
+          className={`${baseButtonClass} ${currentPage === 1 ? 'btn-disabled' : ''}`}
           onClick={() => handlePageClick(currentPage - 1)}
           disabled={disabled || currentPage === 1}
           aria-label="上一页"
@@ -128,7 +107,7 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
           return (
             <button
               key={`ellipsis-${index}`}
-              className={`${baseButtonClass} join-item btn-disabled`}
+              className={`${baseButtonClass} btn-disabled`}
               disabled
             >
               ...
@@ -142,7 +121,7 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
         return (
           <button
             key={pageNum}
-            className={`${baseButtonClass} join-item ${isActive ? 'btn-active' : ''}`}
+            className={`${baseButtonClass} ${isActive ? 'btn-secondary' : ''}`}
             onClick={() => handlePageClick(pageNum)}
             disabled={disabled}
             aria-label={`第 ${pageNum} 页`}
@@ -156,24 +135,12 @@ export const SuPagination: React.FC<SuPaginationProps> = ({
       {/* 下一页按钮 */}
       {showPrevNext && (
         <button
-          className={`${baseButtonClass} join-item ${currentPage === totalPages ? 'btn-disabled' : ''}`}
+          className={`${baseButtonClass} ${currentPage === totalPages ? 'btn-disabled' : ''}`}
           onClick={() => handlePageClick(currentPage + 1)}
           disabled={disabled || currentPage === totalPages}
           aria-label="下一页"
         >
           »
-        </button>
-      )}
-
-      {/* 末页按钮 */}
-      {showFirstLast && (
-        <button
-          className={`${baseButtonClass} join-item ${currentPage === totalPages ? 'btn-disabled' : ''}`}
-          onClick={() => handlePageClick(totalPages)}
-          disabled={disabled || currentPage === totalPages}
-          aria-label="末页"
-        >
-          »»
         </button>
       )}
     </div>

@@ -2,22 +2,26 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { SuButton, SuPagination } from 'iaxixi-max'
+// import { SuButton, SuPagination } from 'iaxixi-max'
+import { SuButton, SuPagination } from './index'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
   return (
     <>
       <div>
         <SuPagination
-          currentPage={1}
-          onPageChange={() => { console.log('onPageChange') }}
-          showFirstLast
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
           showPrevNext
           size="md"
           totalPages={10}
-          visiblePages={5}
+          visiblePages={10}
         />
         <button className="btn btn-secondary">Secondary</button>
         <SuButton children="Click me" variant='primary' />
