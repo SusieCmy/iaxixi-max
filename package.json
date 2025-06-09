@@ -1,6 +1,6 @@
 {
-  "name": "@susiecmy/iaxixi-max",
-  "version": "0.1.9",
+  "name": "iaxixi-max",
+  "version": "0.1.11",
   "description": "A modern React UI component library built with TypeScript",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
